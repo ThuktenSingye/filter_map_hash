@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Filter Map Hash Module
 module FilterMapHash
   def self.filter_map_hash(hash)
     result = {}
