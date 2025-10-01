@@ -10,4 +10,14 @@ module FilterMapHash
     end
     result
   end
+
+  module InstanceMethods
+    def filter_map_hash(&block)
+      FilterMapHash.filter_map_hash(self, &block)
+    end
+  end
+end
+
+class Hash
+  include FilterMapHash::InstanceMethods
 end

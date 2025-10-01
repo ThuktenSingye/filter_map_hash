@@ -6,7 +6,7 @@ A simple Ruby gem that provides a `filter_map_hash` method for Hashes, combining
 
 Add this line to your application's Gemfile:
 
-```bash
+```ruby
 gem 'filter_map_hash'
 ```
 
@@ -20,7 +20,7 @@ bundle install
 
 Require the gem in your Ruby code:
 
-```bash
+```ruby
 require 'filter_map_hash'
 ```
 
@@ -32,10 +32,26 @@ input = { a: 1, b: 2, c: 3, d: 4 }
 result = FilterMapHash.filter_map_hash(input) do |key, value| 
   value * 2 if value.even? 
 end 
+
 puts result
 ```
 ```bash
 Output: { b: 4, d: 8 }
+```
+Or, after including the instance method module into `Hash`, you can call it directly on any hash:
+
+```ruby
+input = { a: 1, b: 2, c: 3, d: 4 }
+
+result = input.filter_map_hash do |key, value|
+  value + 2 if value.odd?
+end
+
+puts result
+```
+
+```bash
+Output: { a: 3, c: 5 }
 ```
 
 The block passed to filter_map_hash receives each key and value from the hash, transforming the value or returning nil to exclude it from the result.
